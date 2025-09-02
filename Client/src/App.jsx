@@ -1,5 +1,18 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+
+    window.scrollTo(0, 0);
+  }, [pathname]); 
+
+  return null; 
+};
+
+export default ScrollToTop;import React from "react";
+import { Routes, Route, useLocation } from "react-router-dom"; 
 import HomePage from "./pages/HomePage";
 import "./App.css";
 import ProductDetailPage from "./pages/ProductDetailPage";
@@ -22,14 +35,23 @@ import AdminLayout from "./components/AdminLayout";
 import AdminPromotionsPage from "./pages/admin/AdminPromotionsPage";
 import Footer from "./components/Footer";
 import ProductList from "./components/ProductList";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
+  const location = useLocation();
+  const pathsWithoutFooter = ['/auth'];
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  const showFooter = !pathsWithoutFooter.includes(location.pathname) && !isAdminRoute;
+
   return (
     <>
       <Navbar />
+      <ScrollToTop />
+      
       <ToastContainer
         position="top-right"
-        autoClose={3000} // 3 seconds mein band ho jayega
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -41,7 +63,7 @@ function App() {
         className="mt-20"
       />
 
-      <main >
+      <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/product/:id" element={<ProductDetailPage />} />
@@ -50,7 +72,6 @@ function App() {
           <Route path="/products" element={<ProductList />} />
           <Route path="/saved-items" element={<SavedItemsPage />} />
 
-          {/* Protected Routes */}
           <Route
             path="/checkout"
             element={
@@ -75,18 +96,17 @@ function App() {
               </AdminProtectedRoute>
             }
           >
-            {/* Ye saare routes ab AdminLayout ke andar <Outlet /> mein khulein ge */}
             <Route path="dashboard" element={<AdminDashboardPage />} />
             <Route path="orders" element={<AdminOrderListPage />} />
             <Route path="products" element={<AdminProductListPage />} />
             <Route path="users" element={<AdminUserListPage />} />
             <Route path="history" element={<AdminOrderHistoryPage />} />
             <Route path="promotions" element={<AdminPromotionsPage />} />
-
           </Route>
         </Routes>
       </main>
-      <Footer/>
+
+      {showFooter && <Footer />}
     </>
   );
 }
