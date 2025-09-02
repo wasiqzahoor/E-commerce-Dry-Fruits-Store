@@ -87,7 +87,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3">
                 <FaPhoneAlt className="text-amber-400" />
-                <a href="tel:+923049996000" className="hover:text-amber-400 transition-colors duration-300">+92 304 9996000</a>
+                <a href="tel:+923049996000" className="hover:text-amber-400 transition-colors duration-300">+92 3029464542</a>
               </li>
               <li className="flex items-center gap-3">
                 <FaEnvelope className="text-amber-400" />
@@ -98,7 +98,7 @@ const Footer = () => {
             <div className="flex gap-4 mt-6">
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-amber-400 transition-transform hover:scale-110 duration-300"><FaFacebookF /></a>
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-amber-400 transition-transform hover:scale-110 duration-300"><FaInstagram /></a>
-              <a href="https://wa.me/923049996000" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-amber-400 transition-transform hover:scale-110 duration-300"><FaWhatsapp /></a>
+              <a href="https://wa.me/923029464542" target="_blank" rel="noopener noreferrer" className="text-xl hover:text-amber-400 transition-transform hover:scale-110 duration-300"><FaWhatsapp /></a>
             </div>
           </motion.div>
           
@@ -108,7 +108,7 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="bg-emerald-950 py-4">
         <div className="container mx-auto px-6 text-center text-sm text-gray-400">
-          &copy; {new Date().getFullYear()} Gilgit Dry Fruits. All Rights Reserved.
+          &copy; {new Date().getFullYear()} Gilgit Dry Fruits. All Rights Reserved by Chaudhary Wasiq Zahoor.
         </div>
       </div>
     </footer>
